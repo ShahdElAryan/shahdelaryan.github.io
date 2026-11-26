@@ -1,0 +1,99 @@
+
+<style>
+  .panel-root {
+    flex-direction: column;
+    width: 460px;
+  }
+
+  .panel-content {
+    flex-direction: column;
+    gap: 10px;
+    padding: 26px;
+  }
+
+  .eyebrow {
+    color: #22D3C5;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+
+  .heading {
+    color: #fafaf7;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+  }
+
+  .body {
+    color: #dddfe3;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .instruction-content {
+    flex-direction: column;
+    gap: 10px;
+    padding: 26px;
+  }
+
+  .button {
+    justify-content: flex-start;
+    margin-left: 26px;
+    margin-right: 26px;
+    margin-bottom: 22px;
+  }
+
+  .button-label {
+    transform-translate-y: 1px;
+  }
+</style>
+
+<Panel class="panel-root">
+
+  <div id="welcome-content" class="panel-content">
+    <div class="eyebrow">INTERACTIVE ANATOMY EXPERIENCE</div>
+    <div class="heading">Welcome to the Human Body</div>
+    <div class="body">
+      Explore the heart and lungs through an immersive mixed reality experience.
+    </div>
+    <div class="body">
+      Discover their structures, learn about their functions, and interact with realistic 3D anatomical models.
+    </div>
+  </div>
+
+  <div id="instruction-one" class="instruction-content" style="display: none">
+    <div class="eyebrow">LET'S GET STARTED</div>
+    <div class="heading">Explore the Organs</div>
+    <div class="body">
+      Point at an organ and grab it to explore it up close.
+    </div>
+  </div>
+
+  <div id="instruction-three" class="instruction-content" style="display: none">
+    <div class="eyebrow">INTERACT</div>
+    <div class="heading">Examine the Organ</div>
+    <div class="body">
+      Move the organ toward the holographic platform to examine it.
+    </div>
+  </div>
+
+  <Button id="xr-button" class="button">
+    <ButtonIcon>
+      <RectangleGoggles></RectangleGoggles>
+    </ButtonIcon>
+    <ButtonLabel class="button-label">Enter XR</ButtonLabel>
+  </Button>
+
+  <Button id="exit-button" class="button" style="display: none">
+    <ButtonIcon>
+      <LogIn></LogIn>
+    </ButtonIcon>
+    <ButtonLabel class="button-label">Exit to Browser</ButtonLabel>
+  </Button>
+
+  <Button id="start-button" class="button" style="display: none">
+    <ButtonLabel class="button-label">Begin Exploration</ButtonLabel>
+  </Button>
+
+</Panel>
