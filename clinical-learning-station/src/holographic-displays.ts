@@ -116,7 +116,9 @@ export class HolographicDisplaysSystem extends createSystem({}) {
     panels.add(this.leftPanel, this.rightPanel);
 
     this.displayRoot.add(panels);
-    panels.visible = false;
+    //panels.visible = false;
+    this.leftPanel.visible = false;
+this.rightPanel.visible = false;
 
     // Register both panels as XR ray-interactable targets
     this.world
@@ -150,19 +152,23 @@ export class HolographicDisplaysSystem extends createSystem({}) {
       'lungs',
     );
 
-    const handleOrganSelected = (event: Event) => {
-      const customEvent =
-        event as CustomEvent<{ organ: OrganName }>;
+  const handleOrganSelected = (event: Event) => {
+  const customEvent =
+    event as CustomEvent<{ organ: OrganName }>;
 
-      this.focusedPanel = null;
-      this.showOrgan(customEvent.detail.organ);
-      panels.visible = true;
-    };
+  this.focusedPanel = null;
+  this.showOrgan(customEvent.detail.organ);
 
-    const handleOrganGrabbed = () => {
-      this.focusedPanel = null;
-      panels.visible = false;
-    };
+  this.leftPanel.visible = true;
+  this.rightPanel.visible = true;
+};
+
+const handleOrganGrabbed = () => {
+  this.focusedPanel = null;
+
+  this.leftPanel.visible = false;
+  this.rightPanel.visible = false;
+};
 
     window.addEventListener('organ-selected', handleOrganSelected);
     window.addEventListener('organ-grabbed', handleOrganGrabbed);
@@ -233,10 +239,12 @@ export class HolographicDisplaysSystem extends createSystem({}) {
     }
   }
 
-  private toggleFocus(panel: Mesh): void {
-    this.focusedPanel =
-      this.focusedPanel === panel ? null : panel;
-  }
+ private toggleFocus(panel: Mesh): void {
+  if (!panel.visible) return;
+
+  this.focusedPanel =
+    this.focusedPanel === panel ? null : panel;
+}
 
   private createCanvas(): HTMLCanvasElement {
     const canvas = document.createElement('canvas');

@@ -252,7 +252,7 @@ export class AnatomySystem extends createSystem({}) {
     if (organ.parent == null) return;
 
     const targetWorld = platformWorld.clone();
-    targetWorld.y += 0.45;
+    targetWorld.y += 0.9;
 
     organ.parent.updateWorldMatrix(true, false);
     organ.parent.worldToLocal(targetWorld);
